@@ -21,14 +21,15 @@ if (!localStorage.getItem("tasks")) {
 // Event Handler: Tombol "Tambahkan Tugas"
 addTaskBtn.addEventListener("click", () => {
   const tasks = getTasks();
+  const newTaskValue = escapeHtml(inputTask.value);
 
-  if (inputTask.value !== "") {
-    if (tasks.filter((e) => e.task === inputTask.value).length > 0) {
+  if (newTaskValue !== "") {
+    if (tasks.filter((e) => e.task === newTaskValue).length > 0) {
       // Jika tugas duplikat, cegah!
       alert("⚠️ Tugas sudah ada, silahkan ketikkan tugas lain!");
     } else {
-      addTask(inputTask.value);
-      tasks.push({ task: inputTask.value, isChecked: false });
+      addTask(newTaskValue);
+      tasks.push({ task: newTaskValue, isChecked: false });
       localStorage.setItem("tasks", JSON.stringify(tasks));
       inputTask.value = "";
     }
@@ -76,7 +77,7 @@ containerTask.addEventListener("click", (e) => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   } else if (e.target.classList.contains("edit-task")) {
     // Tombol Edit [✏️]
-    let newTask = prompt("ℹ️ Edit tugas ini:").toString();
+    let newTask = escapeHtml(prompt("ℹ️ Edit tugas ini:"));
 
     if (tasks.filter((e) => e.task === newTask).length > 0) {
       alert("⚠️ Task tidak boleh sama!");
@@ -103,4 +104,13 @@ function addTask(task) {
   feather.replace();
 
   return taskBox;
+}
+
+function escapeHtml(unsafe) {
+  return unsafe
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }

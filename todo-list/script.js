@@ -77,14 +77,14 @@ containerTask.addEventListener("click", (e) => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   } else if (e.target.classList.contains("edit-task")) {
     // Tombol Edit [✏️]
-    let newTask = escapeHtml(prompt("ℹ️ Edit tugas ini:"));
+    let newTask = prompt("ℹ️ Edit tugas ini:");
 
-    if (tasks.filter((e) => e.task === newTask).length > 0) {
+    if (tasks.filter((e) => e.task === escapeHtml(newTask)).length > 0) {
       alert("⚠️ Task tidak boleh sama!");
     } else {
       tasks.forEach((el) => {
-        if (el.task === e.target.previousElementSibling.innerText)
-          el.task = newTask;
+        if (el.task === escapeHtml(e.target.previousElementSibling.innerText))
+          el.task = escapeHtml(newTask);
       });
       e.target.previousElementSibling.innerText = newTask;
       localStorage.setItem("tasks", JSON.stringify(tasks));

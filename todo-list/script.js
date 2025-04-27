@@ -81,9 +81,9 @@ containerTask.addEventListener("click", (e) => {
     if (tasks.filter((e) => e.task === newTask).length > 0) {
       alert("⚠️ Task tidak boleh sama!");
     } else {
-      tasks.forEach((e) => {
-        if (e.task === e.target.previousElementSibling.innerText)
-          e.task = newTask;
+      tasks.forEach((el) => {
+        if (el.task === e.target.previousElementSibling.innerText)
+          el.task = newTask;
       });
       e.target.previousElementSibling.innerText = newTask;
       localStorage.setItem("tasks", JSON.stringify(tasks));

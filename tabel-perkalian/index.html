@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabel Matematika Generator</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <h1 id="title">Tabel Perkalian Generator (1.0)</h1>
+
+    <!-- Form -->
+    <form action="" method="post" id="input-range-form">
+      <label for="firstNum">Masukkan angka awal: </label>
+      <input
+        type="number"
+        name="firstNum"
+        min="1"
+        max="15"
+        id="firstNum"
+        autofocus
+        required
+      />
+      <label for="lastNum">Masukkan angka akhir: </label>
+      <input
+        type="number"
+        name="lastNum"
+        min="1"
+        max="15"
+        id="lastNum"
+        required
+      />
+
+      <button type="menu" id="submit">Submit!</button>
+    </form>
+    <table id="tabel-matematika" cellspacing="0" border="2">
+      <thead id="thead"></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+
+    <script src="./js/script.js"></script>
+  </body>
+</html>

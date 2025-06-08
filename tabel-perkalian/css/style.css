@@ -26,12 +26,13 @@ body {
   flex-wrap: wrap;
   padding: 2rem;
   border-radius: 1rem;
-  border: 5px solid black;
+  border: 3px solid black;
   margin: 2rem auto 0;
 }
 
-#input-range-form * {
+#input-range-form > * {
   width: 100%;
+  font-weight: 700;
 }
 
 #input-range-form label {
@@ -54,10 +55,19 @@ body {
 }
 
 #tabel-matematika {
-  max-width: 80%;
+  max-width: 60%;
   max-height: 80%;
   margin: 3rem auto 0;
   text-align: center;
+}
+
+#tabel-matematika.activated {
+  border: 0.5px solid black;
+}
+
+#tabel-matematika.activated th,
+#tabel-matematika.activated td {
+  border: 1.5px solid black;
 }
 
 thead {
@@ -95,7 +105,25 @@ tbody tr > * {
 
 #tabel-matematika th,
 #tabel-matematika td {
+  min-width: 3rem;
   font-size: 1.5em;
+}
+
+.restart {
+  display: none;
+  border-radius: 0.5rem;
+  margin: 2rem auto 0;
+  padding: 0.5rem 0;
+}
+
+.restart a,
+.submit {
+  color: black;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  padding: 2rem;
+  text-decoration: none;
+  font-weight: 700;
 }
 
 /* Media Queries */
@@ -105,12 +133,6 @@ tbody tr > * {
   :root {
     font-size: 70%;
   }
-
-  /* #tabel-matematika th,
-  #tabel-matematika td {
-    width: 3rem;
-    height: 3rem;
-  } */
 }
 
 /* Tablet */
@@ -123,6 +145,14 @@ tbody tr > * {
 /* Mobile Phone */
 @media (max-width: 450px) {
   :root {
-    font-size: 40%;
+    font-size: 50%;
+  }
+
+  #tabel-perkalian {
+    max-width: 60%;
+  }
+
+  #tabel-perkalian td {
+    font-size: 0.5em;
   }
 }

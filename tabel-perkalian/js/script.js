@@ -1,8 +1,13 @@
 const inputRangeForm = document.getElementById("input-range-form");
 const thead = document.getElementById("thead");
 const tbody = document.getElementById("tbody");
+const table = document.getElementById("tabel-matematika");
+const restartBtn = document.querySelector(".restart");
 
 inputRangeForm.addEventListener("submit", function (e) {
+  table.classList.add("activated");
+  restartBtn.style.display = "block";
+
   e.preventDefault();
   const firstNum = parseInt(document.getElementById("firstNum").value);
   const lastNum = parseInt(document.getElementById("lastNum").value);

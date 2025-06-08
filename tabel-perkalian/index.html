@@ -27,6 +27,7 @@
         min="1"
         max="15"
         id="firstNum"
+        maxlength="2"
         autofocus
         required
       />
@@ -37,15 +38,21 @@
         min="1"
         max="15"
         id="lastNum"
+        maxlength="2"
         required
       />
 
-      <button type="menu" id="submit">Submit!</button>
+      <button type="menu" id="submit" class="submit">Kirim!</button>
     </form>
-    <table id="tabel-matematika" cellspacing="0" border="2">
+
+    <!-- Table -->
+    <table id="tabel-matematika" cellspacing="0">
       <thead id="thead"></thead>
       <tbody id="tbody"></tbody>
     </table>
+
+    <!-- Restart Button -->
+    <button class="restart"><a href="">Ulangi</a></button>
 
     <script src="./js/script.js"></script>
   </body>

@@ -3,10 +3,12 @@ const thead = document.getElementById("thead");
 const tbody = document.getElementById("tbody");
 const table = document.getElementById("tabel-matematika");
 const restartBtn = document.querySelector(".restart");
+const printBtn = document.querySelector(".print-btn");
 
 inputRangeForm.addEventListener("submit", function (e) {
   table.classList.add("activated");
   restartBtn.style.display = "block";
+  printBtn.style.display = "block";
 
   e.preventDefault();
   const firstNum = parseInt(document.getElementById("firstNum").value);
@@ -20,62 +22,38 @@ function createTable(firstNum, lastNum) {
   th.textContent = "×";
   thead.appendChild(th);
 
-  if (firstNum < lastNum) {
-    for (let i = firstNum; i <= lastNum; i++) {
-      const th = document.createElement("th");
-      th.textContent = i;
-      thead.appendChild(th);
+  let inc = firstNum > lastNum ? false : true;
 
-      const tr = document.createElement("tr");
-
-      const thBody = document.createElement("th");
-      thBody.textContent = i;
-      tr.appendChild(thBody);
-
-      for (let j = firstNum; j <= lastNum; j++) {
-        const td = document.createElement("td");
-        td.textContent = i * j;
-        tr.appendChild(td);
-      }
-
-      tbody.appendChild(tr);
-    }
-  } else if (firstNum > lastNum) {
-    for (let i = firstNum; i >= lastNum; i--) {
-      const th = document.createElement("th");
-      th.textContent = i;
-      thead.appendChild(th);
-
-      const tr = document.createElement("tr");
-
-      const thBody = document.createElement("th");
-      thBody.textContent = i;
-      tr.appendChild(thBody);
-
-      for (let j = firstNum; j >= lastNum; j--) {
-        const td = document.createElement("td");
-        td.textContent = i * j;
-        tr.appendChild(td);
-      }
-
-      tbody.appendChild(tr);
-    }
-  } else if (firstNum === lastNum) {
+  for (
+    let i = firstNum;
+    firstNum <= lastNum ? i <= lastNum : i >= lastNum;
+    inc ? i++ : i--
+  ) {
     const th = document.createElement("th");
-    th.textContent = firstNum;
+    th.textContent = i;
     thead.appendChild(th);
 
     const tr = document.createElement("tr");
-    tbody.appendChild(tr);
-
     const thBody = document.createElement("th");
-    thBody.textContent = firstNum;
+    thBody.textContent = i;
     tr.appendChild(thBody);
 
-    const td = document.createElement("td");
-    td.textContent = firstNum;
-    tr.appendChild(td);
-
+    for (
+      let j = firstNum;
+      firstNum <= lastNum ? j <= lastNum : j >= lastNum;
+      inc ? j++ : j--
+    ) {
+      const td = document.createElement("td");
+      td.textContent = i * j;
+      tr.appendChild(td);
+    }
     tbody.appendChild(tr);
   }
 }
+
+printBtn.addEventListener("click", function () {
+  document.getElementById("title").remove();
+  restartBtn.remove();
+  printBtn.remove();
+  print();
+});

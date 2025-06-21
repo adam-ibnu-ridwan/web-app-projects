@@ -86,6 +86,11 @@ body {
   color: #eaeaea;
 }
 
+#tabel-matematika.print-mode {
+  max-width: 90%;
+  max-height: 90vh;
+}
+
 /* Button */
 
 button {
